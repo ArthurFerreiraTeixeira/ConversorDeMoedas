@@ -1,0 +1,114 @@
+*{
+  margin: 0; /* Remove espaçamento externo padrão */
+  padding: 0; /* Remove espaçamento interno padrão */
+  box-sizing: border-box; /* Inclui padding e borda dentro da largura/altura do elemento */
+  font-family: 'Roboto', sans-serif; /*Estilo da fonte*/
+  outline: none; /*Retira a borda de destaque*/
+}
+
+body{
+  background-color: #8b52fe; /*Cor da pagina*/
+}
+
+h1{
+  text-align: center; /*Alinha todos o texto ao centro*/
+  color: #000000; /*Cor do texto*/
+  font-size: 30px; /*Tamanho da letra*/
+  font-weight: 700; /*Tamanho da fonte - fina ou grossa*/
+  margin-top: 20px; /*Espaço da topo da pagina para o h1*/
+  margin-bottom: 10px; /*Espaço entre o h1 e a img*/
+}
+
+#logo{
+  margin-left: auto; /*Centraliza horizontalmente, empurra da esquerda*/
+  margin-right: auto; /*Centraliza horizontalmente, empurra da direita*/
+  display: block; /*A img ocupa a linha toda e centraliza*/
+  width: 300px; /*Largura da imagem*/
+}
+
+main{
+  width: 400px; /*Largura da main*/
+  background-color: #F4F4F4; /*Cor da main*/
+  border-radius: 12px; /*Arredonda a borda da main*/
+  margin-top: 20px; /*Ditancia da img para a main*/
+  margin-bottom: 20px; /*Distancia do main para o final da pagina*/
+  margin-left: auto; /*Centraliza horizontalmente, empurra da esquerda*/
+  margin-right: auto; /*Centraliza horizontalmente, empurra da direita*/
+  padding: 25px 25px; /* Distancia das bordas do main com o conteudo*/
+  border: none;
+}
+
+label{
+  color: #777777; /*Cor do texto*/
+  font-size: 14px; /*Tamanho da letra*/
+  font-weight: 400; /*Tamanho da fonte - fina ou grossa*/
+}
+
+select, input{
+  background-color: #FFFFFF; /*Cor do select e do input*/
+  width: 100%; /*Coloca o select e o input ocupando toda a largura disponivel*/
+  height: 38px; /*Altura do select e do input*/
+  margin-top: 10px; /*Espaçamento no topo entre a palavra e o select/input*/
+  margin-bottom: 20px; /*Espaçamento em baixo entre a palavra e o select/input*/
+  cursor: pointer; /*Muda o cursor do mouse ao passar em cima*/
+  padding-left: 20px; /*Espaçamento entre a palavra e o lado esquerdo do select*/
+  border-radius: 10px; /*Arredonda as bordas*/
+  appearance: none; /*Tira as setas de escolha do select*/
+  border: none; /*Tira a borda*/
+  color: #000000; /*Cor do texto*/
+  font-size: 16px; /*Tamanho da letra*/
+  font-weight: 700; /*Tamanho da fonte - fina ou grossa*/
+}
+
+
+button{
+  width: 100%; /*Coloca o button ocupando toda a largura disponivel*/
+  height: 35px; /*Altura do button*/
+  background-color: #8b52fe; /*Cor do Botão*/
+  color: #FFFFFF; /*Cor do texto*/
+  border: none; /*Tira a borda*/
+  border-radius: 20px; /*Arredonda as bordas*/
+  margin-bottom: 15px; /*Espaçamento para baixo*/
+  font-size: 15px; /*Tamanho da letra*/
+  font-weight: 700; /*Tamanho da fonte - fina ou grossa*/
+  text-align: center; /*Alinha todos o texto ao centro*/
+  cursor: pointer; /*Muda o cursor do mouse ao passar em cima*/
+} 
+
+button:hover{
+  opacity: 0.8; /*Coloca uma opacidade ao passar o cursos em cima do botão por conta do houver*/
+} 
+
+button:active{
+  opacity: 0.4; /*Coloca uma opacidade ao apertar o botão por conta do active*/
+} 
+
+section {
+  border: 1px solid #8b52fe; /*Coloca uma borda na section*/
+  width: 100%; /*Section ocupa toda a largura disponivel*/
+  border-radius: 20px; /*Arredonda as bordas*/
+  text-align: center; /*Alinha todos o texto ao centro*/
+  padding-top: 15px; /*Espaçamento entre a borda e o conteudo em cima*/
+  padding-bottom: 15px; /*Espaçamento entre a borda e o conteudo em baixo*/
+  margin-top: 10px; /*Espaçamento entre a section e o botão*/
+}
+.bandeiras{
+  width: 60px; /*Largura da img*/
+}
+
+#seta{
+  padding-top: 10px; /*Espaçamento entre a seta e as palavras em cima*/
+  padding-bottom: 10px; /*Espaçamento entre a seta e as palavras em baixo*/
+}
+
+.nome-moeda{
+  color: #777777; /*Cor do texto*/
+  font-size: 13px; /*Tamanho da letra*/
+  font-weight: 400; /*Tamanho da fonte - fina ou grossa*/
+}
+
+.valor-moeda{
+  color: #000000; /*Cor do texto*/
+  font-size: 18px; /*Tamanho da letra*/
+  font-weight: 700; /*Tamanho da fonte - fina ou grossa*/
+}
