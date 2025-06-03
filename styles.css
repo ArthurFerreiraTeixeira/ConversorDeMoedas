@@ -92,7 +92,7 @@ section {
   padding-bottom: 15px; /*Espaçamento entre a borda e o conteudo em baixo*/
   margin-top: 10px; /*Espaçamento entre a section e o botão*/
 }
-.bandeiras{
+.bandeiras, .bandeiras-converter{
   width: 60px; /*Largura da img*/
 }
 
@@ -101,13 +101,13 @@ section {
   padding-bottom: 10px; /*Espaçamento entre a seta e as palavras em baixo*/
 }
 
-.nome-moeda{
+.nome-moeda, .nome-moeda-converter{
   color: #777777; /*Cor do texto*/
   font-size: 13px; /*Tamanho da letra*/
   font-weight: 400; /*Tamanho da fonte - fina ou grossa*/
 }
 
-.valor-moeda{
+.valor-moeda, .valor-moeda-convertida{
   color: #000000; /*Cor do texto*/
   font-size: 18px; /*Tamanho da letra*/
   font-weight: 700; /*Tamanho da fonte - fina ou grossa*/

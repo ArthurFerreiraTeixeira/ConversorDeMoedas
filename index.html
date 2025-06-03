@@ -15,8 +15,7 @@
     <main> <!-- Conteúdo principal da página -->
         <label> <!-- Utilizada para associar um rótulo a um elemento de controle de um formulário -->
             Converter <b>de</b>
-            <select name="" id=""> <!-- criar listas suspensas -->
-                <option value="" disabled selected>Selecione</option> <!-- Nao e possivel selecionar essa opçao pois e somente para ficar no inicio indicando selecionar algo -->
+            <select name="" id="select-moeda-conversao"> <!-- criar listas suspensas -->
                 <option value="">R$ Real</option> <!-- Definir as opções disponíveis na lista -->
                 <option value="">US$ Dólar</option> <!-- Definir as opções disponíveis na lista -->
                 <option value="">€ Euro</option> <!-- Definir as opções disponíveis na lista -->
@@ -26,31 +25,30 @@
         </label>
         <label> <!-- Utilizada para associar um rótulo a um elemento de controle de um formulário -->
             Converter <b>para</b>
-            <select name="" id=""> <!-- criar listas suspensas -->
-                <option value="" disabled selected>Selecione</option> <!-- Nao e possivel selecionar essa opçao pois e somente para ficar no inicio indicando selecionar algo -->
-                <option value="">R$ Real</option> <!-- Definir as opções disponíveis na lista -->
-                <option value="">US$ Dólar</option> <!-- Definir as opções disponíveis na lista -->
-                <option value="">€ Euro</option> <!-- Definir as opções disponíveis na lista -->
-                <option value="">£ Libra</option> <!-- Definir as opções disponíveis na lista -->
-                <option value="">₿ Bitcoin</option> <!-- Definir as opções disponíveis na lista -->
+            <select name="" id="select-moeda-convertida"> <!-- criar listas suspensas -->
+                <option value="Dolar">US$ Dólar</option> <!-- Definir as opções disponíveis na lista -->
+                <option value="Real">R$ Real</option> <!-- Definir as opções disponíveis na lista -->
+                <option value="Euro">€ Euro</option> <!-- Definir as opções disponíveis na lista -->
+                <option value="Libra">£ Libra</option> <!-- Definir as opções disponíveis na lista -->
+                <option value="Bitcoin">₿ Bitcoin</option> <!-- Definir as opções disponíveis na lista -->
             </select>
         </label>
         <label> <!-- Utilizada para associar um rótulo a um elemento de controle de um formulário -->
             Valor
-            <input placeholder="R$ 0,00" type="number"> <!-- Input para entrada de número -->
+            <input placeholder="R$ 0,00" type="number" class="valor-input"> <!-- Input para entrada de número -->
         </label>
-        <button>Converter</button> <!-- Botão-->
+        <button id="button">Converter</button> <!-- Botão-->
         <section> <!-- Sessões da Pagina -->
             <div> <!-- Definem as divisões da página -->
-                <img class="bandeiras" src="./assets/real.png" alt="img-logo-real"> <!-- Imagem da Logo da Moeda -->
-                <p class="nome-moeda">Real</p> <!-- Paragrafo que define o nome da moeda escolhida -->
+                <img class="bandeiras-converter" src="./assets/real.png" alt="img-logo-real"> <!-- Imagem da Logo da Moeda -->
+                <p class="nome-moeda-converter">Real</p> <!-- Paragrafo que define o nome da moeda escolhida -->
                 <p class="valor-moeda">R$ 0,00</p> <!-- Paragrafo que da o valor escolhido para converter-->
             </div>
             <img src="./assets/seta.png" alt="img-seta" id="seta"> <!-- Imagem da Seta -->
             <div> <!-- Definem as divisões da página -->
                 <img  class="bandeiras" src="./assets/dolar.png" alt="img-logo-dolar"> <!-- Imagem da Logo da Moeda -->
                 <p class="nome-moeda">Dólar</p> <!-- Paragrafo que define o nome da moeda escolhida -->
-                <p class="valor-moeda">US$ 0,00</p> <!-- Paragrafo que da o valor convertido -->
+                <p class="valor-moeda-convertida">US$ 0,00</p> <!-- Paragrafo que da o valor convertido -->
             </div>
         </section>
     </main>
