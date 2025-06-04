@@ -1,81 +1,72 @@
-const convertButton = document.querySelector("#button") //Puxa no html o id do button e cria uma variavel
-const selectMoedaConversao = document.querySelector("#select-moeda-conversao") //Puxa no html o id no select das moedas que serao convertidas de: ,e cria uma variavel
-const selectMoedaConvertida = document.querySelector("#select-moeda-convertida") //Puxa no html o id no select das moedas que seram convertidas para: ,e cria uma variavel
+const convertButton = document.querySelector("#button")// Pega o botão "Converter" do HTML pelo id "button"
+const selectMoedaConversao = document.querySelector("#select-moeda-conversao")// Pega o select (lista) da moeda que será convertida de (origem)
+const selectMoedaConvertida = document.querySelector("#select-moeda-convertida")// Pega o select (lista) da moeda para qual será convertida (destino)
 
 function valoresConvertidos() {
-    const valorDoIput = document.querySelector(".valor-input").value //Cria uma variavel para o valor que foi colocado no input
-    const valorDaMoeda = document.querySelector(".valor-moeda") //Cria uma variavel para colocar na ilustraçao o valor que foi colocado nbo input
-    const valorDaMoedaConvertida = document.querySelector(".valor-moeda-convertida") //Cria uma variavel para colocar na ilustraçao de cada moeda o valor convertido
+    const valorDoInput = document.querySelector(".valor-input").value// Pega o valor que o usuário digitou no input
+    const valorDaMoeda = document.querySelector(".valor-moeda")// Pega o elemento HTML que mostra o valor original (antes da conversão)
+    const valorDaMoedaConvertida = document.querySelector(".valor-moeda-convertida")// Pega o elemento HTML que mostra o valor convertido (resultado)
+    const moedaOrigem = selectMoedaConversao.value// Pega qual moeda o usuário escolheu para converter (origem)
+    const moedaDestino = selectMoedaConvertida.value// Pega qual moeda o usuário escolheu para converter para (destino)
 
-    const valorDolar = 5.69 //Valor fixo do Dolar
-    const valorEuro = 6.47 //Valor fixo do Euro
-    const valorLibra = 7.69 //Valor fixo da Libra
-    const valorBitcoin = 598750 //Valor fixo do Bitcoin
+    const valor = {
+        Real: 1,
+        Dolar: 5.69,
+        Euro: 6.47,
+        Libra: 7.69,
+        Bitcoin: 598750
+    }// Objeto com valores fixos de cada moeda em relação ao Real (BRL)
 
-    valorDaMoeda.innerHTML = new Intl.NumberFormat("pt-BR", {
-        style: "currency", //Coloca o style identificando com uma moeda
-        currency: "BRL" //Sigla para identicar a moeda Real
-    }).format(valorDoIput) //Coloca na ilustraçao o valor que foi colocado em real no input
+    const moedas = {
+        Real: "BRL",
+        Dolar: "USD",
+        Euro: "EUR",
+        Libra: "GBP",
+        Bitcoin: "BTC"
+    }// Objeto com os códigos oficiais de cada moeda para formatação
 
-    if (selectMoedaConvertida.value == "Dolar") {
-        valorDaMoedaConvertida.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency", //Coloca o style identificando com uma moeda
-            currency: "USD" //Sigla para identicar a moeda Dolar
-        }).format(valorDoIput / valorDolar) //Se for selecionado o Dolar divide o valor do Iput com o valor da moeda Dolar
-    }
+    const valorEmReais = valorDoInput * valor[moedaOrigem]// Converte o valor digitado para Reais (multiplica pelo valor da moeda origem)
+    const valorConvertido = valorEmReais / valor[moedaDestino]// Converte o valor em Reais para a moeda destino (divide pelo valor da moeda destino)
 
-    if (selectMoedaConvertida.value == "Euro") {
-        valorDaMoedaConvertida.innerHTML = new Intl.NumberFormat("de-De", {
-            style: "currency", //Coloca o style identificando com uma moeda
-            currency: "EUR" //Sigla para identicar a moeda Euro
-        }).format(valorDoIput / valorEuro) //Se for selecionado o euro divide o valor do Iput com o valor da moeda Euro
-    }
+    valorDaMoeda.innerHTML = (moedaOrigem === "Bitcoin" ? "₿ " : "") + new Intl.NumberFormat("pt-BR", {
+        style: moedaOrigem === "Bitcoin" ? "decimal" : "currency", // Bitcoin não é moeda no Intl, então usa decimal
+        currency: moedas[moedaOrigem], // Código da moeda para formatação
+        minimumFractionDigits: moedaOrigem === "Bitcoin" ? 8 : 2 // Bitcoin usa mais casas decimais
+    }).format(valorDoInput)// Atualiza o valor original na tela, formatando de acordo com a moeda escolhida
 
-    if (selectMoedaConvertida.value == "Libra") {
-        valorDaMoedaConvertida.innerHTML = new Intl.NumberFormat("en-GB", {
-            style: "currency", //Coloca o style identificando um decimal pois o Bitcoin nao e uma moeda oficial
-            currency: "GBP" //Sigla para identicar a moeda Libra
-        }).format(valorDoIput / valorLibra) //Se for selecionado a Libra divide o valor do Iput com o valor da moeda Libra
-    }
+    valorDaMoedaConvertida.innerHTML = (moedaDestino === "Bitcoin" ? "₿ " : "") + new Intl.NumberFormat("pt-BR", {
+        style: moedaDestino === "Bitcoin" ? "decimal" : "currency",
+        currency: moedas[moedaDestino],
+        minimumFractionDigits: moedaDestino === "Bitcoin" ? 8 : 2
+    }).format(valorConvertido)// Atualiza o valor convertido na tela, formatando da mesma forma para a moeda destino
 
-    if (selectMoedaConvertida.value == "Bitcoin") {
-        valorDaMoedaConvertida.innerHTML = "₿ " + new Intl.NumberFormat("en-US", {
-            style: 'decimal', //Coloca com um valor decimal, pois o bitcoin nao e considerado uma moeda no iso
-            minimumFractionDigits: 8, //minimo de numeros da fraçao
-            maximumFractionDigits: 8 //maximo de numeros da fraçao
-        }).format(valorDoIput / valorBitcoin) //Se for selecionado Bitcoin divide o valor do Iput com o valor do Bitcoin
-    }
+}// Função que faz a conversão das moedas e atualiza os valores na tela
 
-// Intl.NumberFormat formata números de acordo com a localização e opções definidas (como estilo de moeda, número de casas decimais, etc.)
-}//Uma funçao para converter os valores das moedas
+function atualizarMoeda(moeda, nomeClasse, imgClasse) {
+    const nome = document.querySelector(nomeClasse)// Seleciona o elemento que mostra o nome da moeda
+    const img = document.querySelector(imgClasse)// Seleciona o elemento que mostra a imagem da moeda
 
-function modeloMoeda() {
-    const NomeDaMoeda = document.querySelector(".nome-moeda") //Cria uma variavel para o nome das moedas
-    const ImgMoeda = document.querySelector(".bandeiras") //Cria uma variavel para as imagens das moedas
+    const dados = {
+        Real: { nome: "Real", img: "./assets/real.png" },
+        Dolar: { nome: "Dólar", img: "./assets/dolar.png" },
+        Euro: { nome: "Euro", img: "./assets/euro.png" },
+        Libra: { nome: "Libra", img: "./assets/libra.png" },
+        Bitcoin: { nome: "Bitcoin", img: "./assets/bitcoin.png" }
+    }// Objeto que guarda os nomes e caminhos das imagens de cada moeda
 
-    if (selectMoedaConvertida.value == "Dolar") {
-        NomeDaMoeda.innerHTML = "Dolar" //Troca o nome da moeda
-        ImgMoeda.src = "./assets/dolar.png" //Troca a imagem da moeda
-    } //Se for selecionado o value Dolar sera realizado esses procedimentos
+    nome.innerHTML = dados[moeda].nome// Atualiza o texto do nome da moeda com base na moeda escolhida
+    img.src = dados[moeda].img // Atualiza a imagem da moeda com o caminho correto da moeda escolhida
 
-    if (selectMoedaConvertida.value == "Euro") {
-        NomeDaMoeda.innerHTML = "Euro" //Troca o nome da moeda
-        ImgMoeda.src = "./assets/euro.png"//Troca a imagem da moeda
-    } //Se for selecionado o value Euro sera realizado esses procedimentos
+}// Função para atualizar o nome e a imagem da moeda mostrada na interface
+// recebe a moeda (string), o seletor do nome (classe CSS) e o seletor da imagem (classe CSS)
 
-    if (selectMoedaConvertida.value == "Libra") {
-        NomeDaMoeda.innerHTML = "Libra" //Troca o nome da moeda
-        ImgMoeda.src = "./assets/libra.png"//Troca a imagem da moeda
-    } //Se for selecionado o Libra Bitcoin sera realizado esses procedimentos
+function atualizarInterface() {
+    atualizarMoeda(selectMoedaConversao.value, ".nome-moeda-converter", ".bandeiras-converter")// Atualiza o nome e imagem da moeda que será convertida (origem)
+    atualizarMoeda(selectMoedaConvertida.value, ".nome-moeda", ".bandeiras")// Atualiza o nome e imagem da moeda para qual será convertida (destino)
+    valoresConvertidos()// Atualiza os valores convertidos na tela
 
-    if (selectMoedaConvertida.value == "Bitcoin") {
-        NomeDaMoeda.innerHTML = "Bitcoin" //Troca o nome da moeda
-        ImgMoeda.src = "./assets/bitcoin.png"//Troca a imagem da moeda
-    } //Se for selecionado o value Bitcoin sera realizado esses procedimentos
+}// Função que atualiza tudo na interface: nomes, imagens e valores convertidos
 
-
-valoresConvertidos() //Coloca a funçao da conversao de valores, quando houver a troca de moedas ja faz a conversao de valores
-} //Uma funçao para converter o texto e a imagem da moeda selecionada para ser convertida
-
-selectMoedaConvertida.addEventListener("change", modeloMoeda) // Quando o usuário muda a moeda selecionada, chama a função que atualiza o nome e a imagem da moeda
-convertButton.addEventListener("click", valoresConvertidos) //Toda vez que clicar no butao converte os valores das moedas
+selectMoedaConvertida.addEventListener("change", atualizarInterface)// Quando o usuário mudar a moeda destino, atualiza a interface
+selectMoedaConversao.addEventListener("change", atualizarInterface)// Quando o usuário mudar a moeda origem, atualiza a interface
+convertButton.addEventListener("click", valoresConvertidos)// Quando o usuário clicar no botão, converte os valores
