@@ -20,5 +20,5 @@
 <h2>👨‍💻 Autor</h2>
 <p>Desenvolvido por Arthur Ferreira.
 Este projeto tem foco educacional, com o objetivo de praticar lógica de programação, manipulação do DOM e estrutura de páginas web.</p>
-<h2>📸 Imagens do Projeto</h2>
-<img src="">
+<h2>📸 Imagem do Projeto</h2>
+<img src="https://github.com/ArthurFerreiraTeixeira/ConversorDeMoedas/blob/master/assets/img-readme.png?raw=true">
